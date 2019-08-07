@@ -25,6 +25,11 @@ namespace EmailParser
             dgvEmailHeaders.AutoGenerateColumns = false;
         }
 
+        /// <summary>
+        /// Retrieves a list of Email headers based on specified filters
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReceiveEmail_Click(object sender, EventArgs e)
         {
             if(String.IsNullOrEmpty(txtEmail.Text) || String.IsNullOrEmpty(txtPassword.Text))
