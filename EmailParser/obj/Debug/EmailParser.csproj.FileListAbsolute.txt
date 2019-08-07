@@ -1,0 +1,16 @@
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\bin\Debug\EmailParser.exe.config
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\bin\Debug\EmailParser.exe
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\bin\Debug\EmailParser.pdb
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\obj\Debug\EmailParser.csprojAssemblyReference.cache
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\obj\Debug\EmailParser.Form1.resources
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\obj\Debug\EmailParser.Properties.Resources.resources
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\obj\Debug\EmailParser.csproj.GenerateResource.cache
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\obj\Debug\EmailParser.csproj.CoreCompileInputs.cache
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\obj\Debug\EmailParser.exe
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\obj\Debug\EmailParser.pdb
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\bin\Debug\EAGetMail.dll
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\obj\Debug\EmailParser.csproj.CopyComplete
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\bin\Debug\HtmlAgilityPack.dll
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\bin\Debug\HtmlAgilityPack.xml
+C:\Users\bin.wu\source\repos\EmailParser\EmailParser\obj\Debug\EmailParser.csproj.ResolveComReference.cache
