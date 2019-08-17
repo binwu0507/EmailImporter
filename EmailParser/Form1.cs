@@ -14,11 +14,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace EmailParser
 {
     public partial class Form1 : Form
     {
+        #region Private Members
+
+        private MailPreview mSelectedMailPreview;
+        private List<MailPreview> mProcessedMailPreviews;
+
+        #endregion Private Members
+
         public Form1()
         {
             InitializeComponent();
@@ -49,13 +57,21 @@ namespace EmailParser
             DataGridViewTextBoxColumn columnReceivedDate = new DataGridViewTextBoxColumn();
             columnReceivedDate.HeaderText = "Received";
             columnReceivedDate.DataPropertyName = "ReceivedDateTime";
+            columnReceivedDate.Width = 160;
             dgvEmailHeaders.Columns.Add(columnReceivedDate);
 
             DataGridViewTextBoxColumn columnFrom = new DataGridViewTextBoxColumn();
             columnFrom.HeaderText = "From";
             columnFrom.DataPropertyName = "From";
-            columnFrom.Width = 260;
+            columnFrom.Width = 160;
             dgvEmailHeaders.Columns.Add(columnFrom);
+
+            DataGridViewCheckBoxColumn columnProcessed = new DataGridViewCheckBoxColumn();
+            columnProcessed.HeaderText = "Processed";
+            columnProcessed.DataPropertyName = "Processed";
+            columnProcessed.Width = 60;
+            columnProcessed.ReadOnly = true;
+            dgvEmailHeaders.Columns.Add(columnProcessed);
 
             DataGridViewButtonColumn columnCommand = new DataGridViewButtonColumn();
             columnCommand.HeaderText = "Retrieve Detail";
@@ -69,6 +85,10 @@ namespace EmailParser
             EmailRepository repo = new EmailRepository( txtEmail.Text, txtPassword.Text);
 
             List<MailPreview> mailPreviews = repo.GetMailPreviews(startDate ,txtFrom.Text.Trim()).ToList();
+
+            mailPreviews.ForEach(x => {
+                x.Processed = this.mProcessedMailPreviews.Any(y => y.From == x.From && y.ReceivedDateTime == x.ReceivedDateTime);
+            });
 
             dgvEmailHeaders.DataSource = mailPreviews;
 
@@ -97,16 +117,18 @@ namespace EmailParser
                 txtItemNumber.Text = "";
                 txtCompany.Text = "";
 
-                MailPreview selectedMailPreview = (MailPreview)dgvEmailHeaders.Rows[e.RowIndex].DataBoundItem;
-                txtInvoiceDate.Text =  selectedMailPreview.ReceivedDateTime.ToShortDateString();
+                mSelectedMailPreview = (MailPreview)dgvEmailHeaders.Rows[e.RowIndex].DataBoundItem;
+                txtInvoiceDate.Text = mSelectedMailPreview.ReceivedDateTime.ToShortDateString();
 
-                MailInfo mailInfoSelected = selectedMailPreview.MailInfo;
+                MailInfo mailInfoSelected = mSelectedMailPreview.MailInfo;
                 EmailRepository repo = new EmailRepository(txtEmail.Text, txtPassword.Text);
                 Mail mailDetail = repo.GetMailDetail(mailInfoSelected);
 
                 webBrowserEmailBody.DocumentText = mailDetail.HtmlBody;
                 btnScrap.Enabled = true;
                 btnExport.Enabled = false;
+
+                MessageBox.Show(mSelectedMailPreview.Processed ? "Processed" : "New");
             }
         }
 
@@ -296,6 +318,36 @@ namespace EmailParser
                     }
 
                     wb.Close();
+
+                    //Test DB ops
+
+                    string connectionString = Properties.Settings.Default.EmailParserConnectionString;
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+
+                        string insertCommand = string.Format(@"INSERT INTO ReceiveLog
+                                                               ([Sender]
+                                                               ,[ReceiveTime])
+                                                         VALUES
+                                                               ('{0}', '{1}')", this.mSelectedMailPreview.From, this.mSelectedMailPreview.ReceivedDateTime);
+                        SqlCommand command = new SqlCommand(insertCommand, conn);
+                        command.Connection.Open();
+                        try
+                        {
+                            int result = command.ExecuteNonQuery();
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+
+                    if(!this.mProcessedMailPreviews.Any(x=>x.From == this.mSelectedMailPreview.From && x.ReceivedDateTime == this.mSelectedMailPreview.ReceivedDateTime))
+                    {
+                        this.mProcessedMailPreviews.Add(new MailPreview { From = this.mSelectedMailPreview.From, ReceivedDateTime = this.mSelectedMailPreview.ReceivedDateTime });
+                    }
+
+
                     //                    ws.Cells[1, 1].Value2 = "Hello";
                 }
             }
@@ -303,6 +355,34 @@ namespace EmailParser
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            mProcessedMailPreviews = new List<MailPreview>();
+            string connectionString = Properties.Settings.Default.EmailParserConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+
+                string queryCommand = "SELECT * FROM [ReceiveLog]";
+                SqlCommand command = new SqlCommand(queryCommand, conn);
+                command.Connection.Open();
+                try
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        mProcessedMailPreviews.Add(new MailPreview { From = reader[1].ToString(), ReceivedDateTime  = DateTime.Parse(reader[2].ToString()) });
+                    }
+
+                    reader.Close();
+                    MessageBox.Show("Processed emails: " + mProcessedMailPreviews.Count);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    throw;
+                }
+            }
+
+
             dtSince.Value = DateTime.Now.AddDays(-7);
         }
     }

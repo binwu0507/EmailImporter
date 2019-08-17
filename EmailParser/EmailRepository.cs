@@ -10,7 +10,7 @@ namespace EmailParser
 {
     public class EmailRepository
     {
-        private string Imap4Server = "imap.allstar.technology";
+        private string Imap4Server = "imap.gmail.com";
         private string eMailAddress;
         private string passWord;
 
@@ -54,9 +54,8 @@ namespace EmailParser
             {
                 Mail mail = new Mail("TryIt");
                 mail.Load(client.GetMailHeader(mailInfos[i]));
-                mailPreviews.Add(new MailPreview { Subject = mail.Subject, ReceivedDateTime = mail.ReceivedDate, From  = String.Format("{0} <{1}>",mail.From.Name, mail.From.Address), MailInfo = mailInfos[i] });
+                mailPreviews.Add(new MailPreview { Subject = mail.Subject, ReceivedDateTime = mail.ReceivedDate, From = String.Format("{0} <{1}>", mail.From.Name, mail.From.Address), MailInfo = mailInfos[i] });
             }
-
 
             return mailPreviews;
         }

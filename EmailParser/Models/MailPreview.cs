@@ -13,5 +13,6 @@ namespace EmailParser.Models
         public DateTime ReceivedDateTime { get; set; }
         public string From { get; set; }
         public MailInfo MailInfo { get; set; }
+        public bool Processed { get; set; }
     }
 }

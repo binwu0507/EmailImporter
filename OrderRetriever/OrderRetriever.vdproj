@@ -21,14 +21,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A28246A4B044CA7F7E64EA097DCA1B34"
-        "OwnerKey" = "8:_C314745F5EE644B09419C89195489E5E"
+        "MsmKey" = "8:_5787E12914B34E7FB78C3EBC2F8C49DF"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A28246A4B044CA7F7E64EA097DCA1B34"
-        "OwnerKey" = "8:_D1407D92EC7E56964DE25EDF400F5A6E"
+        "MsmKey" = "8:_9627CF7275C34E05A4249F139FBE5DB9"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -41,42 +41,6 @@
         {
         "MsmKey" = "8:_C314745F5EE644B09419C89195489E5E"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CDDC1DC23A8A5DB4AD0F84AA7F5B0256"
-        "OwnerKey" = "8:_C314745F5EE644B09419C89195489E5E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D1407D92EC7E56964DE25EDF400F5A6E"
-        "OwnerKey" = "8:_C314745F5EE644B09419C89195489E5E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A28246A4B044CA7F7E64EA097DCA1B34"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C314745F5EE644B09419C89195489E5E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D1407D92EC7E56964DE25EDF400F5A6E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CDDC1DC23A8A5DB4AD0F84AA7F5B0256"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -97,6 +61,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -113,6 +93,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -162,21 +150,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A28246A4B044CA7F7E64EA097DCA1B34"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5787E12914B34E7FB78C3EBC2F8C49DF"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                "ScatterAssemblies"
-                {
-                    "_A28246A4B044CA7F7E64EA097DCA1B34"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Net.Http.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\EmailParser\\bin\\Debug\\EmailParser.mdf"
+            "TargetName" = "8:EmailParser.mdf"
             "Tag" = "8:"
             "Folder" = "8:_C281C643C6B34A9CAFEC5ED2C916C36E"
             "Condition" = "8:"
@@ -190,7 +167,27 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9627CF7275C34E05A4249F139FBE5DB9"
+            {
+            "SourcePath" = "8:..\\EmailParser\\bin\\Debug\\EmailParser_log.ldf"
+            "TargetName" = "8:EmailParser_log.ldf"
+            "Tag" = "8:"
+            "Folder" = "8:_C281C643C6B34A9CAFEC5ED2C916C36E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B04C36E5BD3C4B1B983CB0566786596D"
@@ -211,68 +208,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CDDC1DC23A8A5DB4AD0F84AA7F5B0256"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EAGetMail, Version=4.6.7.2, Culture=neutral, PublicKeyToken=e10a0812eb29cf94, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_CDDC1DC23A8A5DB4AD0F84AA7F5B0256"
-                    {
-                    "Name" = "8:EAGetMail.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:EAGetMail.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C281C643C6B34A9CAFEC5ED2C916C36E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D1407D92EC7E56964DE25EDF400F5A6E"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HtmlAgilityPack, Version=1.11.12.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_D1407D92EC7E56964DE25EDF400F5A6E"
-                    {
-                    "Name" = "8:HtmlAgilityPack.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:HtmlAgilityPack.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C281C643C6B34A9CAFEC5ED2C916C36E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
         }
@@ -365,7 +300,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OrderRetriever"
         "ProductCode" = "8:{5F3DED0F-080B-41F5-BFDD-E1738BA1A34F}"
-        "PackageCode" = "8:{3EC1461B-212D-4A4B-A2C1-B3C21041AB14}"
+        "PackageCode" = "8:{A9DED5F9-6F59-4129-869F-208240918FCE}"
         "UpgradeCode" = "8:{32ED860A-7AFB-4DFC-AEC6-D07974874D06}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
